@@ -2,553 +2,947 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="SPWY Services - Professional tax preparation and financial consulting in Florida and Indiana.">
     <title>SPWY Services - Professional Tax & Financial Services</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
-        .mobile-menu { display: none; }
-        .mobile-menu.active { display: block; }
-        @media (max-width: 768px) {
-            .desktop-menu { display: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .smooth-scroll { scroll-behavior: smooth; }
-        .gradient-bg { background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%); }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #111827;
+        }
+
+        img { max-width: 100%; }
+
+        /* ── TOP BAR ── */
+        .top-bar {
+            background: #1e3a8a;
+            color: white;
+            padding: 0.5rem 1rem;
+            width: 100%;
+        }
+        .top-bar-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .top-bar-left {
+            font-size: 0.75rem;
+        }
+        .call-now-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #22c55e;
+            color: white;
+            text-decoration: none;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .call-now-btn:hover { background: #16a34a; }
+
+        /* ── NAV ── */
+        nav {
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            width: 100%;
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            height: 3.75rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1e3a8a;
+            white-space: nowrap;
+        }
+        .logo span { color: #2563eb; }
+
+        .desktop-links {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .desktop-links a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .desktop-links a:hover { color: #2563eb; }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #374151;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Mobile dropdown */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 0.75rem 1rem 1rem;
+            width: 100%;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a, .mobile-nav button {
+            padding: 0.75rem 0;
+            border: none;
+            background: none;
+            text-align: left;
+            font-size: 1rem;
+            color: #374151;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            border-bottom: 1px solid #f3f4f6;
+            width: 100%;
+        }
+        .mobile-nav a:last-child, .mobile-nav button:last-child {
+            border-bottom: none;
+        }
+        .mobile-nav .mob-schedule-btn {
+            background: #2563eb;
+            color: white;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            border-bottom: none;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            padding: 3rem 1rem;
+            width: 100%;
+        }
+        .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+        .hero p {
+            color: #4b5563;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+        .btn-blue { background: #2563eb; color: white; }
+        .btn-blue:hover { background: #1d4ed8; }
+        .btn-green { background: #16a34a; color: white; }
+        .btn-green:hover { background: #15803d; }
+        .btn-dark { background: #111827; color: white; }
+        .btn-dark:hover { background: #1f2937; }
+        .btn-yellow { background: #eab308; color: #111827; }
+        .btn-yellow:hover { background: #ca8a04; }
+        .btn-white { background: white; color: #1e3a8a; }
+        .btn-white:hover { background: #eff6ff; }
+
+        .call-big {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #111827;
+            color: white;
+            text-decoration: none;
+            padding: 0.875rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            width: 100%;
+        }
+        .call-big .call-label { font-size: 0.7rem; color: #9ca3af; }
+        .call-big .call-number { font-size: 1rem; }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .stat {
+            text-align: center;
+            background: white;
+            padding: 0.75rem 0.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .stat-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2563eb;
+        }
+        .stat-lbl {
+            font-size: 0.7rem;
+            color: #6b7280;
+        }
+
+        /* ── QUICK ACTIONS BAR ── */
+        .quick-bar {
+            background: #1e3a8a;
+            padding: 1rem;
+            width: 100%;
+        }
+        .quick-bar-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ── SECTIONS ── */
+        .section {
+            padding: 3rem 1rem;
+            width: 100%;
+        }
+        .section-gray { background: #f9fafb; }
+        .section-white { background: white; }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .section-title h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+        .section-title p {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        /* ── SERVICE CARDS ── */
+        .cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            width: 100%;
+        }
+        .card:hover { border-color: #2563eb; }
+        .card-head {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        .card-icon {
+            background: #dbeafe;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+        .card-price {
+            font-size: 0.8rem;
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .card-desc {
+            color: #4b5563;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 0.75rem 0;
+        }
+        .feature-list li {
+            padding: 0.3rem 0;
+            font-size: 0.875rem;
+            color: #374151;
+        }
+
+        /* ── UPLOAD ── */
+        .upload-box {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            max-width: 56rem;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .upload-drop {
+            border: 2px dashed #93c5fd;
+            border-radius: 0.5rem;
+            padding: 2rem 1rem;
+            text-align: center;
+            background: #eff6ff;
+            cursor: pointer;
+        }
+        .upload-drop:hover { background: #dbeafe; }
+        .upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .upload-drop p { color: #4b5563; font-size: 0.85rem; }
+        .upload-drop strong { font-size: 1rem; color: #111827; display: block; margin-bottom: 0.25rem; }
+
+        .form-group { margin-bottom: 1rem; }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #374151;
+            margin-bottom: 0.4rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: white;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .security-note {
+            display: flex;
+            gap: 0.75rem;
+            background: #fef3c7;
+            border: 2px solid #fcd34d;
+            border-radius: 0.5rem;
+            padding: 0.875rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #78350f;
+            align-items: flex-start;
+        }
+
+        /* ── OFFICES ── */
+        .offices-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .office-card {
+            background: linear-gradient(135deg, #eff6ff, #ffffff);
+            border: 2px solid #93c5fd;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            width: 100%;
+        }
+        .office-head {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+        .office-icon {
+            background: #2563eb;
+            color: white;
+            padding: 0.65rem;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+        }
+        .office-name { font-size: 1.2rem; font-weight: 700; color: #111827; }
+        .office-sub { color: #2563eb; font-size: 0.85rem; font-weight: 600; }
+
+        .office-detail {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+        .office-detail .icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .office-detail a { color: #111827; text-decoration: none; font-weight: 600; }
+        .office-detail a:hover { color: #2563eb; }
+
+        .office-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+        .office-btns a {
+            display: block;
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+
+        /* ── CONTACT ── */
+        .contact-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: #111827;
+        }
+        .quick-contact {
+            background: #1e3a8a;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .quick-contact h3 {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+        .quick-contact .btn {
+            margin-bottom: 0.75rem;
+        }
+        .why-us {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+        .why-us h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+        .why-item {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 2.5rem 1rem 1.5rem;
+            width: 100%;
+        }
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto 2rem;
+        }
+        .footer-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .footer-logo span { color: #60a5fa; }
+        .footer-desc { color: #9ca3af; font-size: 0.875rem; margin-bottom: 0.75rem; }
+        .footer-phone { color: #60a5fa; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .footer-section h4 { font-weight: 700; margin-bottom: 0.75rem; font-size: 0.95rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin: 0.4rem 0; }
+        .footer-section a { color: #9ca3af; text-decoration: none; font-size: 0.875rem; }
+        .footer-section a:hover { color: white; }
+        .footer-address { color: #9ca3af; font-size: 0.875rem; line-height: 1.8; }
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.8rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ── DESKTOP BREAKPOINTS ── */
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero-btns { flex-direction: row; }
+            .hero-btns .btn { width: auto; flex: 1; }
+            .quick-bar-inner { flex-direction: row; }
+            .quick-bar-inner .btn { flex: 1; }
+            .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+            .offices-grid { flex-direction: row; }
+            .offices-grid .office-card { flex: 1; }
+            .footer-inner { flex-direction: row; flex-wrap: wrap; }
+            .footer-inner > div { flex: 1; min-width: 160px; }
+            .hamburger { display: none !important; }
+            .desktop-links { display: flex !important; }
+            .mobile-nav { display: none !important; }
+        }
+
+        @media (max-width: 767px) {
+            .desktop-links { display: none; }
+            .hamburger { display: block; }
+        }
     </style>
 </head>
-<body class="smooth-scroll">
-    <!-- Top Bar with Call Button -->
-    <div class="bg-blue-900 text-white py-2">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center text-sm">
-                <div class="flex items-center gap-4">
-                    <span>🕒 Mon-Fri: 9AM - 6PM</span>
-                    <span class="hidden md:inline">📍 FL & IN Offices</span>
-                </div>
-                <a href="tel:9547742606" class="flex items-center gap-2 bg-green-500 px-4 py-1 rounded-full hover:bg-green-600 transition font-semibold">
-                    📞 Call Now: (954) 774-2606
-                </a>
-            </div>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span class="top-bar-left">🕒 Mon-Fri: 9AM–6PM &nbsp;|&nbsp; 📍 FL & IN</span>
+            <a href="tel:9547742606" class="call-now-btn">📞 Call: (954) 774-2606</a>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="text-2xl font-bold text-blue-900">
-                    SPWY <span class="text-blue-600">SERVICES</span>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="desktop-menu flex items-center space-x-6">
-                    <a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition">Home</a>
-                    <a href="#services" class="text-gray-700 hover:text-blue-600 font-medium transition">Services</a>
-                    <a href="#upload" class="text-gray-700 hover:text-blue-600 font-medium transition">Upload Docs</a>
-                    <a href="#locations" class="text-gray-700 hover:text-blue-600 font-medium transition">Locations</a>
-                    <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition">Contact</a>
-                    <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
-                        📅 Schedule
-                    </button>
-                </div>
-
-                <!-- Mobile menu button -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700 hover:text-blue-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">SPWY <span>SERVICES</span></div>
+            <div class="desktop-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#upload">Upload Docs</a>
+                <a href="#locations">Locations</a>
+                <a href="#contact">Contact</a>
+                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank')" class="btn btn-blue" style="width:auto;padding:0.5rem 1rem;">📅 Schedule</button>
             </div>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu bg-white border-t md:hidden">
-            <div class="px-4 pt-2 pb-4 space-y-2">
-                <a href="#home" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">Home</a>
-                <a href="#services" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">Services</a>
-                <a href="#upload" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">Upload Documents</a>
-                <a href="#locations" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">Our Locations</a>
-                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">Contact</a>
-                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg text-center hover:bg-blue-700">
-                    📅 Schedule Consultation
-                </button>
-            </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home" onclick="closeMenu()">🏠 Home</a>
+            <a href="#services" onclick="closeMenu()">🧮 Services</a>
+            <a href="#upload" onclick="closeMenu()">📤 Upload Documents</a>
+            <a href="#locations" onclick="closeMenu()">📍 Our Locations</a>
+            <a href="#contact" onclick="closeMenu()">✉️ Contact</a>
+            <a href="tel:9547742606">📞 Call: (954) 774-2606</a>
+            <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank');closeMenu()" class="mob-schedule-btn">📅 Schedule Consultation</button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-20 pb-16 gradient-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="hero-inner">
+            <h1>Professional Tax Services You Can Trust</h1>
+            <p>Expert tax preparation and financial consulting for individuals and businesses in Florida and Indiana. Your financial success is our priority.</p>
+
+            <div class="hero-btns">
+                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank')" class="btn btn-blue">📅 30-Min Consultation</button>
+                <button onclick="window.open('https://calendly.com/spwyservices/virtual-tax-prep','_blank')" class="btn btn-green">🎥 Virtual Tax Prep (1hr)</button>
+            </div>
+
+            <a href="tel:9547742606" class="call-big">
+                <span style="font-size:1.5rem;">📞</span>
                 <div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                        Professional Tax Services You Can Trust
-                    </h1>
-                    <p class="text-xl text-gray-600 mb-8">
-                        Expert tax preparation and financial consulting for individuals and businesses in Florida and Indiana. Your financial success is our priority.
-                    </p>
-                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
-                        <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition">
-                            📅 30-Min Consultation
-                        </button>
-                        <button onclick="window.open('https://calendly.com/spwyservices/virtual-tax-prep', '_blank')" class="bg-green-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-green-700 transition">
-                            🎥 Virtual Tax Prep (1hr)
-                        </button>
-                    </div>
-                    <a href="tel:9547742606" class="inline-flex items-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition">
-                        📞
-                        <div class="text-left">
-                            <div class="text-xs text-gray-300">Call Us Now</div>
-                            <div>(954) 774-2606</div>
-                        </div>
-                    </a>
-                    <div class="mt-8 grid grid-cols-3 gap-4">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600">15+</div>
-                            <div class="text-sm text-gray-600">Years</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600">2</div>
-                            <div class="text-sm text-gray-600">Offices</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600">1000+</div>
-                            <div class="text-sm text-gray-600">Clients</div>
-                        </div>
-                    </div>
+                    <div class="call-label">Call Us Now</div>
+                    <div class="call-number">(954) 774-2606</div>
                 </div>
-                <div class="hidden md:block">
-                    <div class="bg-white rounded-2xl shadow-2xl p-8">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop" alt="Tax Professional" class="rounded-lg w-full">
-                        <div class="mt-6 space-y-3">
-                            <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-                                <span class="text-2xl">🛡️</span>
-                                <span class="font-semibold">IRS Certified Professionals</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
-                                <span class="text-2xl">✅</span>
-                                <span class="font-semibold">Guaranteed Accuracy</span>
-                            </div>
-                        </div>
-                    </div>
+            </a>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-num">15+</div>
+                    <div class="stat-lbl">Years</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">2</div>
+                    <div class="stat-lbl">Offices</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">1K+</div>
+                    <div class="stat-lbl">Clients</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quick Action Bar -->
-    <section class="py-6 bg-blue-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="bg-white text-blue-900 px-6 py-4 rounded-lg font-semibold hover:bg-blue-50 transition">
-                    📅 Schedule 30-Min Consultation
-                </button>
-                <button onclick="window.open('https://calendly.com/spwyservices/virtual-tax-prep', '_blank')" class="bg-green-500 text-white px-6 py-4 rounded-lg font-semibold hover:bg-green-600 transition">
-                    🎥 Book Virtual Tax Prep (1hr)
-                </button>
-                <a href="#upload" class="bg-yellow-500 text-gray-900 px-6 py-4 rounded-lg font-semibold hover:bg-yellow-400 transition text-center">
-                    📤 Upload Tax Documents
-                </a>
+    <!-- QUICK ACTIONS -->
+    <div class="quick-bar">
+        <div class="quick-bar-inner">
+            <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank')" class="btn btn-white">📅 30-Min Consultation</button>
+            <button onclick="window.open('https://calendly.com/spwyservices/virtual-tax-prep','_blank')" class="btn btn-green">🎥 Virtual Tax Prep (1hr)</button>
+            <a href="#upload" class="btn btn-yellow">📤 Upload Tax Documents</a>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="section section-white">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Comprehensive tax and financial services tailored to your needs</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-head">
+                    <div class="card-icon">🧮</div>
+                    <div>
+                        <div class="card-title">Tax Preparation</div>
+                        <div class="card-price">Starting at $150</div>
+                        <div class="card-desc">Expert tax prep for individuals and businesses.</div>
+                    </div>
+                </div>
+                <ul class="feature-list">
+                    <li>✅ Individual Tax Returns</li>
+                    <li>✅ Business Tax Returns</li>
+                    <li>✅ Tax Planning Strategy</li>
+                    <li>✅ IRS Audit Support</li>
+                </ul>
+                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank')" class="btn btn-blue">Book This Service</button>
+            </div>
+
+            <div class="card">
+                <div class="card-head">
+                    <div class="card-icon">📋</div>
+                    <div>
+                        <div class="card-title">Bookkeeping Services</div>
+                        <div class="card-price">Starting at $200/month</div>
+                        <div class="card-desc">Keep your finances organized year-round.</div>
+                    </div>
+                </div>
+                <ul class="feature-list">
+                    <li>✅ Monthly Reconciliation</li>
+                    <li>✅ Financial Statements</li>
+                    <li>✅ Payroll Management</li>
+                    <li>✅ Expense Tracking</li>
+                </ul>
+                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank')" class="btn btn-blue">Book This Service</button>
+            </div>
+
+            <div class="card">
+                <div class="card-head">
+                    <div class="card-icon">📈</div>
+                    <div>
+                        <div class="card-title">Business Consulting</div>
+                        <div class="card-price">Starting at $300</div>
+                        <div class="card-desc">Strategic tax planning to help your business thrive.</div>
+                    </div>
+                </div>
+                <ul class="feature-list">
+                    <li>✅ Business Structure Advice</li>
+                    <li>✅ Tax Strategy Development</li>
+                    <li>✅ Financial Analysis</li>
+                    <li>✅ Growth Planning</li>
+                </ul>
+                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank')" class="btn btn-blue">Book This Service</button>
+            </div>
+
+            <div class="card">
+                <div class="card-head">
+                    <div class="card-icon">👥</div>
+                    <div>
+                        <div class="card-title">Estate Planning</div>
+                        <div class="card-price">Starting at $500</div>
+                        <div class="card-desc">Protect your legacy and family wealth.</div>
+                    </div>
+                </div>
+                <ul class="feature-list">
+                    <li>✅ Estate Tax Planning</li>
+                    <li>✅ Trust Administration</li>
+                    <li>✅ Succession Planning</li>
+                    <li>✅ Wealth Transfer Strategy</li>
+                </ul>
+                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank')" class="btn btn-blue">Book This Service</button>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Comprehensive tax and financial services tailored to your needs
-                </p>
+    <!-- UPLOAD -->
+    <section id="upload" class="section section-gray">
+        <div class="section-title">
+            <div style="font-size:3rem;">📤</div>
+            <h2>Upload Your Tax Documents</h2>
+            <p>Securely upload your documents and we'll get started</p>
+        </div>
+
+        <div class="upload-box">
+            <div class="form-group">
+                <label class="form-label">Preferred Office Location</label>
+                <select class="form-control">
+                    <option>Florida Office - Delray Beach</option>
+                    <option>Indiana Office - Indianapolis</option>
+                </select>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-blue-600 hover:shadow-xl transition-all">
-                    <div class="flex items-start gap-4 mb-4">
-                        <div class="bg-blue-100 p-3 rounded-lg text-3xl">🧮</div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold text-gray-900">Tax Preparation</h3>
-                                <span class="text-blue-600 font-semibold text-sm">Starting at $150</span>
-                            </div>
-                            <p class="text-gray-600">Expert tax preparation for individuals and businesses. Maximize refunds, minimize stress.</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 mt-4">
-                        <li class="flex items-center gap-2 text-gray-700">✅ Individual Tax Returns</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Business Tax Returns</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Tax Planning Strategy</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ IRS Audit Support</li>
-                    </ul>
-                    <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="w-full mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        Book This Service
-                    </button>
-                </div>
+            <div class="upload-drop">
+                <div class="upload-icon">📁</div>
+                <strong>Tap to upload your documents</strong>
+                <p>PDF, JPG, PNG, DOC — Max 10MB per file</p>
+            </div>
 
-                <!-- Service 2 -->
-                <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-blue-600 hover:shadow-xl transition-all">
-                    <div class="flex items-start gap-4 mb-4">
-                        <div class="bg-blue-100 p-3 rounded-lg text-3xl">📋</div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold text-gray-900">Bookkeeping Services</h3>
-                                <span class="text-blue-600 font-semibold text-sm">Starting at $200/month</span>
-                            </div>
-                            <p class="text-gray-600">Professional bookkeeping to keep your finances organized and compliant year-round.</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 mt-4">
-                        <li class="flex items-center gap-2 text-gray-700">✅ Monthly Reconciliation</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Financial Statements</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Payroll Management</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Expense Tracking</li>
-                    </ul>
-                    <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="w-full mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        Book This Service
-                    </button>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-blue-600 hover:shadow-xl transition-all">
-                    <div class="flex items-start gap-4 mb-4">
-                        <div class="bg-blue-100 p-3 rounded-lg text-3xl">📈</div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold text-gray-900">Business Consulting</h3>
-                                <span class="text-blue-600 font-semibold text-sm">Starting at $300</span>
-                            </div>
-                            <p class="text-gray-600">Strategic tax planning and business consulting to help your business thrive.</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 mt-4">
-                        <li class="flex items-center gap-2 text-gray-700">✅ Business Structure Advice</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Tax Strategy Development</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Financial Analysis</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Growth Planning</li>
-                    </ul>
-                    <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="w-full mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        Book This Service
-                    </button>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-blue-600 hover:shadow-xl transition-all">
-                    <div class="flex items-start gap-4 mb-4">
-                        <div class="bg-blue-100 p-3 rounded-lg text-3xl">👥</div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-2xl font-bold text-gray-900">Estate Planning</h3>
-                                <span class="text-blue-600 font-semibold text-sm">Starting at $500</span>
-                            </div>
-                            <p class="text-gray-600">Comprehensive estate planning to protect your legacy and family wealth.</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 mt-4">
-                        <li class="flex items-center gap-2 text-gray-700">✅ Estate Tax Planning</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Trust Administration</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Succession Planning</li>
-                        <li class="flex items-center gap-2 text-gray-700">✅ Wealth Transfer Strategy</li>
-                    </ul>
-                    <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="w-full mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        Book This Service
-                    </button>
-                </div>
+            <div class="security-note">
+                <span style="font-size:1.25rem;flex-shrink:0;">🛡️</span>
+                <div><strong>Secure Upload:</strong> All files are encrypted. We never share your documents.</div>
             </div>
         </div>
     </section>
 
-    <!-- Document Upload Section -->
-    <section id="upload" class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <div class="inline-block bg-blue-100 p-4 rounded-full mb-4 text-5xl">📤</div>
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Upload Your Tax Documents</h2>
-                <p class="text-xl text-gray-600">
-                    Securely upload your tax documents and we'll get started on your return
-                </p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium mb-2">Preferred Office Location</label>
-                    <select class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none">
-                        <option>Florida Office - Delray Beach</option>
-                        <option>Indiana Office - Indianapolis</option>
-                    </select>
-                </div>
-
-                <div class="border-2 border-dashed border-blue-300 rounded-lg p-8 text-center bg-blue-50 hover:bg-blue-100 transition cursor-pointer">
-                    <div class="text-5xl mb-4">📁</div>
-                    <p class="text-lg font-semibold text-gray-900 mb-2">
-                        Click to upload or drag and drop
-                    </p>
-                    <p class="text-gray-600">
-                        PDF, JPG, PNG, DOC (Max 10MB per file)
-                    </p>
-                </div>
-
-                <div class="mt-8 bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4">
-                    <div class="flex items-start gap-3">
-                        <span class="text-2xl">🛡️</span>
-                        <div class="text-sm text-yellow-900">
-                            <strong>Secure Upload:</strong> All files are encrypted and stored securely. 
-                            We never share your documents with third parties.
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- LOCATIONS -->
+    <section id="locations" class="section section-white">
+        <div class="section-title">
+            <h2>Our Locations</h2>
+            <p>Serving clients in Florida and Indiana</p>
         </div>
-    </section>
 
-    <!-- Office Locations -->
-    <section id="locations" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Office Locations</h2>
-                <p class="text-xl text-gray-600">Serving clients in Florida and Indiana</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Florida Office -->
-                <div class="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-xl p-8 hover:shadow-xl transition">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="bg-blue-600 p-3 rounded-lg text-3xl">🏢</div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900">Florida Office</h3>
-                            <div class="text-blue-600 font-semibold">SPWY Services</div>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <span class="text-xl">📍</span>
-                            <div>
-                                <div class="font-semibold text-gray-900">1300 Northwest 17th Avenue</div>
-                                <div class="text-gray-600">Delray Beach, FL, USA</div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">📞</span>
-                            <a href="tel:9547742606" class="font-semibold text-gray-900 hover:text-blue-600">(954) 774-2606</a>
-                        </div>
-                        
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">🕒</span>
-                            <div class="text-gray-700">Mon-Fri: 9:00 AM - 6:00 PM</div>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 grid grid-cols-2 gap-3">
-                        <a href="https://maps.google.com/?q=1300+Northwest+17th+Avenue+Delray+Beach+FL" target="_blank" class="bg-blue-600 text-white px-4 py-3 rounded-lg text-center hover:bg-blue-700 transition font-semibold">
-                            Get Directions
-                        </a>
-                        <a href="tel:9547742606" class="bg-green-600 text-white px-4 py-3 rounded-lg text-center hover:bg-green-700 transition font-semibold">
-                            📞 Call Office
-                        </a>
+        <div class="offices-grid">
+            <!-- Florida -->
+            <div class="office-card">
+                <div class="office-head">
+                    <div class="office-icon">🏢</div>
+                    <div>
+                        <div class="office-name">Florida Office</div>
+                        <div class="office-sub">SPWY Services</div>
                     </div>
                 </div>
+                <div class="office-detail">
+                    <span class="icon">📍</span>
+                    <div>
+                        <strong>1300 Northwest 17th Avenue</strong><br>
+                        <span style="color:#4b5563;">Delray Beach, FL, USA</span>
+                    </div>
+                </div>
+                <div class="office-detail">
+                    <span class="icon">📞</span>
+                    <a href="tel:9547742606">(954) 774-2606</a>
+                </div>
+                <div class="office-detail">
+                    <span class="icon">🕒</span>
+                    <span style="color:#374151;">Mon–Fri: 9:00 AM – 6:00 PM</span>
+                </div>
+                <div class="office-btns">
+                    <a href="https://maps.google.com/?q=1300+Northwest+17th+Avenue+Delray+Beach+FL" target="_blank" class="btn-blue" style="padding:0.75rem;border-radius:0.5rem;color:white;">📍 Directions</a>
+                    <a href="tel:9547742606" class="btn-green" style="padding:0.75rem;border-radius:0.5rem;color:white;">📞 Call</a>
+                </div>
+            </div>
 
-                <!-- Indiana Office -->
-                <div class="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-xl p-8 hover:shadow-xl transition">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="bg-blue-600 p-3 rounded-lg text-3xl">🏢</div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900">Indiana Office</h3>
-                            <div class="text-blue-600 font-semibold">SPWY Services</div>
-                        </div>
+            <!-- Indiana -->
+            <div class="office-card">
+                <div class="office-head">
+                    <div class="office-icon">🏢</div>
+                    <div>
+                        <div class="office-name">Indiana Office</div>
+                        <div class="office-sub">SPWY Services</div>
                     </div>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <span class="text-xl">📍</span>
-                            <div>
-                                <div class="font-semibold text-gray-900">3402 North Shadeland Avenue</div>
-                                <div class="text-gray-600">Indianapolis, IN, USA</div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">📞</span>
-                            <a href="tel:9547742606" class="font-semibold text-gray-900 hover:text-blue-600">(954) 774-2606</a>
-                        </div>
-                        
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">🕒</span>
-                            <div class="text-gray-700">Mon-Fri: 9:00 AM - 6:00 PM</div>
-                        </div>
+                </div>
+                <div class="office-detail">
+                    <span class="icon">📍</span>
+                    <div>
+                        <strong>3402 North Shadeland Avenue</strong><br>
+                        <span style="color:#4b5563;">Indianapolis, IN, USA</span>
                     </div>
-
-                    <div class="mt-6 grid grid-cols-2 gap-3">
-                        <a href="https://maps.google.com/?q=3402+North+Shadeland+Avenue+Indianapolis+IN" target="_blank" class="bg-blue-600 text-white px-4 py-3 rounded-lg text-center hover:bg-blue-700 transition font-semibold">
-                            Get Directions
-                        </a>
-                        <a href="tel:9547742606" class="bg-green-600 text-white px-4 py-3 rounded-lg text-center hover:bg-green-700 transition font-semibold">
-                            📞 Call Office
-                        </a>
-                    </div>
+                </div>
+                <div class="office-detail">
+                    <span class="icon">📞</span>
+                    <a href="tel:9547742606">(954) 774-2606</a>
+                </div>
+                <div class="office-detail">
+                    <span class="icon">🕒</span>
+                    <span style="color:#374151;">Mon–Fri: 9:00 AM – 6:00 PM</span>
+                </div>
+                <div class="office-btns">
+                    <a href="https://maps.google.com/?q=3402+North+Shadeland+Avenue+Indianapolis+IN" target="_blank" class="btn-blue" style="padding:0.75rem;border-radius:0.5rem;color:white;">📍 Directions</a>
+                    <a href="tel:9547742606" class="btn-green" style="padding:0.75rem;border-radius:0.5rem;color:white;">📞 Call</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Get Started Today</h2>
-                <p class="text-xl text-gray-600">Schedule your consultation or send us a message</p>
+    <!-- CONTACT -->
+    <section id="contact" class="section section-gray">
+        <div class="section-title">
+            <h2>Get Started Today</h2>
+            <p>Schedule a consultation or send us a message</p>
+        </div>
+
+        <div class="contact-inner">
+            <!-- Quick Actions -->
+            <div class="quick-contact">
+                <h3>Quick Actions</h3>
+                <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation','_blank')" class="btn btn-white">📅 Schedule 30-Min Consultation</button>
+                <button onclick="window.open('https://calendly.com/spwyservices/virtual-tax-prep','_blank')" class="btn btn-green">🎥 Book Virtual Tax Prep (1hr)</button>
+                <a href="tel:9547742606" class="btn btn-yellow" style="display:block;text-align:center;padding:0.875rem;">📞 Call: (954) 774-2606</a>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Contact Form -->
-                <div class="bg-white border-2 border-gray-200 rounded-xl p-8">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
-                    <form class="space-y-4">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Full Name *</label>
-                            <input type="text" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none" placeholder="John Doe">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Email *</label>
-                            <input type="email" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none" placeholder="john@example.com">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Phone</label>
-                            <input type="tel" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none" placeholder="(954) 774-2606">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Preferred Office</label>
-                            <select class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none">
-                                <option>Florida - Delray Beach</option>
-                                <option>Indiana - Indianapolis</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Service Needed</label>
-                            <select class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none">
-                                <option value="">Select a service</option>
-                                <option>Tax Preparation</option>
-                                <option>Bookkeeping</option>
-                                <option>Business Consulting</option>
-                                <option>Estate Planning</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Message *</label>
-                            <textarea required rows="4" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none" placeholder="Tell us about your needs..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
-                            ✉️ Send Message
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Quick Actions -->
-                <div>
-                    <div class="bg-blue-900 text-white rounded-xl p-8 mb-6">
-                        <h3 class="text-2xl font-bold mb-6">Quick Actions</h3>
-                        <div class="space-y-4">
-                            <button onclick="window.open('https://calendly.com/spwyservices/30min-consultation', '_blank')" class="w-full bg-white text-blue-900 px-6 py-4 rounded-lg font-semibold hover:bg-blue-50 transition">
-                                📅 Schedule 30-Min Consultation
-                            </button>
-                            
-                            <button onclick="window.open('https://calendly.com/spwyservices/virtual-tax-prep', '_blank')" class="w-full bg-green-500 text-white px-6 py-4 rounded-lg font-semibold hover:bg-green-600 transition">
-                                🎥 Book Virtual Tax Prep (1hr)
-                            </button>
-                            
-                            <a href="tel:9547742606" class="w-full bg-yellow-500 text-gray-900 px-6 py-4 rounded-lg font-semibold hover:bg-yellow-400 transition flex items-center justify-center gap-2">
-                                📞 Call: (954) 774-2606
-                            </a>
-                        </div>
+            <!-- Contact Form -->
+            <div class="contact-card">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" required class="form-control" placeholder="John Doe">
                     </div>
-
-                    <div class="bg-white border-2 border-gray-200 rounded-xl p-8">
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Why Choose SPWY Services?</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-2 text-gray-700">✅ IRS Certified Tax Professionals</li>
-                            <li class="flex items-center gap-2 text-gray-700">✅ 15+ Years of Experience</li>
-                            <li class="flex items-center gap-2 text-gray-700">✅ Two Convenient Locations</li>
-                            <li class="flex items-center gap-2 text-gray-700">✅ Virtual & In-Person Services</li>
-                            <li class="flex items-center gap-2 text-gray-700">✅ Secure Document Upload</li>
-                            <li class="flex items-center gap-2 text-gray-700">✅ Guaranteed Accuracy</li>
-                        </ul>
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" required class="form-control" placeholder="john@example.com">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-control" placeholder="(954) 774-2606">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Preferred Office</label>
+                        <select class="form-control">
+                            <option>Florida - Delray Beach</option>
+                            <option>Indiana - Indianapolis</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Service Needed</label>
+                        <select class="form-control">
+                            <option value="">Select a service</option>
+                            <option>Tax Preparation</option>
+                            <option>Bookkeeping</option>
+                            <option>Business Consulting</option>
+                            <option>Estate Planning</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message *</label>
+                        <textarea required rows="4" class="form-control" placeholder="Tell us about your needs..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-blue">✉️ Send Message</button>
+                </form>
+            </div>
+
+            <!-- Why Us -->
+            <div class="why-us">
+                <h3>Why Choose SPWY Services?</h3>
+                <div class="why-item">✅ IRS Certified Tax Professionals</div>
+                <div class="why-item">✅ 15+ Years of Experience</div>
+                <div class="why-item">✅ Two Convenient Locations</div>
+                <div class="why-item">✅ Virtual & In-Person Services</div>
+                <div class="why-item">✅ Secure Document Upload</div>
+                <div class="why-item">✅ Guaranteed Accuracy</div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="text-2xl font-bold mb-4">
-                        SPWY <span class="text-blue-400">SERVICES</span>
-                    </div>
-                    <p class="text-gray-400 mb-4">
-                        Professional tax and financial services in Florida and Indiana.
-                    </p>
-                    <a href="tel:9547742606" class="flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold">
-                        📞 (954) 774-2606
-                    </a>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Services</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#services" class="hover:text-white">Tax Preparation</a></li>
-                        <li><a href="#services" class="hover:text-white">Bookkeeping</a></li>
-                        <li><a href="#services" class="hover:text-white">Business Consulting</a></li>
-                        <li><a href="#services" class="hover:text-white">Estate Planning</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Florida Office</h4>
-                    <div class="text-gray-400 space-y-1">
-                        <div>1300 Northwest 17th Avenue</div>
-                        <div>Delray Beach, FL</div>
-                        <div class="pt-2">(954) 774-2606</div>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Indiana Office</h4>
-                    <div class="text-gray-400 space-y-1">
-                        <div>3402 North Shadeland Avenue</div>
-                        <div>Indianapolis, IN</div>
-                        <div class="pt-2">(954) 774-2606</div>
-                    </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-logo">SPWY <span>SERVICES</span></div>
+                <div class="footer-desc">Professional tax and financial services in Florida and Indiana.</div>
+                <a href="tel:9547742606" class="footer-phone">📞 (954) 774-2606</a>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Tax Preparation</a></li>
+                    <li><a href="#services">Bookkeeping</a></li>
+                    <li><a href="#services">Business Consulting</a></li>
+                    <li><a href="#services">Estate Planning</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Florida Office</h4>
+                <div class="footer-address">
+                    1300 Northwest 17th Avenue<br>
+                    Delray Beach, FL<br>
+                    (954) 774-2606
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; 2026 SPWY Services (spwyinc.com). All rights reserved. | Licensed Tax Professionals</p>
+            <div class="footer-section">
+                <h4>Indiana Office</h4>
+                <div class="footer-address">
+                    3402 North Shadeland Avenue<br>
+                    Indianapolis, IN<br>
+                    (954) 774-2606
+                </div>
             </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 SPWY Services (spwyinc.com). All rights reserved. | Licensed Tax Professionals
         </div>
     </footer>
 
     <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
+        function toggleMenu() {
+            document.getElementById('mobileNav').classList.toggle('open');
         }
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobileMenu').classList.remove('active');
-            });
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        function closeMenu() {
+            document.getElementById('mobileNav').classList.remove('open');
+        }
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
