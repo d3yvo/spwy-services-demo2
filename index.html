@@ -822,6 +822,17 @@
 
                     <div class="form-group">
                         <label>Select Documents to Upload (Up to 15 files) *</label>
+                        
+                        <!-- DOCUMENT COUNTER BADGE -->
+                        <div id="documentCounter" style="display:none;background:linear-gradient(135deg,#3b82f6,#2563eb);color:white;padding:20px;border-radius:12px;text-align:center;margin-bottom:20px;box-shadow:0 4px 12px rgba(59,130,246,0.3)">
+                            <div style="font-size:48px;font-weight:800;margin-bottom:8px" id="counterNumber">0</div>
+                            <div style="font-size:16px;font-weight:600;opacity:0.9" id="counterText">Documents Selected</div>
+                            <div style="background:rgba(255,255,255,0.2);height:8px;border-radius:4px;margin-top:12px;overflow:hidden">
+                                <div id="counterProgress" style="background:white;height:100%;width:0%;transition:width 0.3s;border-radius:4px"></div>
+                            </div>
+                            <div style="font-size:13px;margin-top:8px;opacity:0.8" id="counterLimit">0 of 15 maximum</div>
+                        </div>
+
                         <div class="file-upload-area" id="fileUploadArea" onclick="document.getElementById('fileInput').click()">
                             <div class="file-upload-icon">📁</div>
                             <p><strong>Click to select files</strong> or drag and drop</p>
@@ -1070,6 +1081,36 @@
 
         function displayFiles() {
             fileList.innerHTML = '';
+            const fileCount = selectedFiles.length;
+            
+            // Update document counter badge
+            const counterBadge = document.getElementById('documentCounter');
+            const counterNumber = document.getElementById('counterNumber');
+            const counterText = document.getElementById('counterText');
+            const counterProgress = document.getElementById('counterProgress');
+            const counterLimit = document.getElementById('counterLimit');
+            
+            if (fileCount > 0) {
+                counterBadge.style.display = 'block';
+                counterNumber.textContent = fileCount;
+                counterText.textContent = fileCount === 1 ? 'Document Selected' : 'Documents Selected';
+                
+                // Update progress bar
+                const percentage = (fileCount / MAX_FILES) * 100;
+                counterProgress.style.width = percentage + '%';
+                counterLimit.textContent = `${fileCount} of ${MAX_FILES} maximum`;
+                
+                // Change color if approaching limit
+                if (fileCount >= 12) {
+                    counterBadge.style.background = 'linear-gradient(135deg,#f59e0b,#d97706)'; // Orange warning
+                } else if (fileCount === MAX_FILES) {
+                    counterBadge.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)'; // Green full
+                } else {
+                    counterBadge.style.background = 'linear-gradient(135deg,#3b82f6,#2563eb)'; // Blue default
+                }
+            } else {
+                counterBadge.style.display = 'none';
+            }
             
             selectedFiles.forEach((file, index) => {
                 const fileItem = document.createElement('div');
@@ -1163,6 +1204,10 @@
             // For now, we'll simulate upload since we need a backend
             // In production, send to your server or Google Drive API
             setTimeout(() => {
+                const uploadedCount = selectedFiles.length;
+                
+                // Update success message with count
+                uploadSuccess.innerHTML = `✅ <strong>${uploadedCount} document${uploadedCount > 1 ? 's' : ''}</strong> uploaded successfully! We'll review them and contact you within 24 hours.`;
                 uploadSuccess.classList.add('show');
                 uploadSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 
@@ -1175,6 +1220,9 @@
                 displayFiles();
                 uploadBtn.textContent = '📤 Upload Documents';
                 uploadBtn.disabled = false;
+                
+                // Hide counter badge
+                document.getElementById('documentCounter').style.display = 'none';
                 
                 setTimeout(() => {
                     uploadSuccess.classList.remove('show');
