@@ -822,16 +822,6 @@
 
                     <div class="form-group">
                         <label>Select Documents to Upload (Up to 15 files) *</label>
-                        
-                        <!-- DOCUMENT COUNTER BADGE -->
-                        <div id="documentCounter" style="display:none;background:linear-gradient(135deg,#3b82f6,#2563eb);color:white;padding:20px;border-radius:12px;text-align:center;margin-bottom:20px;box-shadow:0 4px 12px rgba(59,130,246,0.3)">
-                            <div style="font-size:48px;font-weight:800;margin-bottom:8px" id="counterNumber">0</div>
-                            <div style="font-size:16px;font-weight:600;opacity:0.9" id="counterText">Documents Selected</div>
-                            <div style="background:rgba(255,255,255,0.2);height:8px;border-radius:4px;margin-top:12px;overflow:hidden">
-                                <div id="counterProgress" style="background:white;height:100%;width:0%;transition:width 0.3s;border-radius:4px"></div>
-                            </div>
-                            <div style="font-size:13px;margin-top:8px;opacity:0.8" id="counterLimit">0 of 15 maximum</div>
-                        </div>
 
                         <div class="file-upload-area" id="fileUploadArea" onclick="document.getElementById('fileInput').click()">
                             <div class="file-upload-icon">📁</div>
@@ -842,6 +832,16 @@
                     </div>
 
                     <div class="file-list" id="fileList"></div>
+
+                    <!-- SIMPLE DOCUMENT COUNTER -->
+                    <div id="simpleCounter" style="display:none;text-align:center;padding:16px;margin:20px 0;background:#f0f9ff;border:2px solid #3b82f6;border-radius:8px">
+                        <div style="font-size:18px;font-weight:700;color:#1e40af">
+                            📄 You have selected <span id="simpleCountNumber" style="color:#2563eb;font-size:22px">0</span> document<span id="pluralS">s</span>
+                        </div>
+                        <div style="font-size:14px;color:#6b7280;margin-top:6px">
+                            Maximum: 15 documents
+                        </div>
+                    </div>
 
                     <div class="success-message" id="uploadSuccess">
                         ✅ Documents uploaded successfully! We'll review them and contact you within 24 hours.
@@ -1083,33 +1083,32 @@
             fileList.innerHTML = '';
             const fileCount = selectedFiles.length;
             
-            // Update document counter badge
-            const counterBadge = document.getElementById('documentCounter');
-            const counterNumber = document.getElementById('counterNumber');
-            const counterText = document.getElementById('counterText');
-            const counterProgress = document.getElementById('counterProgress');
-            const counterLimit = document.getElementById('counterLimit');
+            // Update simple counter
+            const simpleCounter = document.getElementById('simpleCounter');
+            const simpleCountNumber = document.getElementById('simpleCountNumber');
+            const pluralS = document.getElementById('pluralS');
             
             if (fileCount > 0) {
-                counterBadge.style.display = 'block';
-                counterNumber.textContent = fileCount;
-                counterText.textContent = fileCount === 1 ? 'Document Selected' : 'Documents Selected';
+                // Show counter
+                simpleCounter.style.display = 'block';
+                simpleCountNumber.textContent = fileCount;
                 
-                // Update progress bar
-                const percentage = (fileCount / MAX_FILES) * 100;
-                counterProgress.style.width = percentage + '%';
-                counterLimit.textContent = `${fileCount} of ${MAX_FILES} maximum`;
+                // Handle plural/singular
+                pluralS.textContent = fileCount === 1 ? '' : 's';
                 
-                // Change color if approaching limit
-                if (fileCount >= 12) {
-                    counterBadge.style.background = 'linear-gradient(135deg,#f59e0b,#d97706)'; // Orange warning
-                } else if (fileCount === MAX_FILES) {
-                    counterBadge.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)'; // Green full
+                // Change color based on count
+                if (fileCount >= 14) {
+                    simpleCounter.style.background = '#fef3c7'; // Yellow warning
+                    simpleCounter.style.borderColor = '#f59e0b';
+                } else if (fileCount === 15) {
+                    simpleCounter.style.background = '#dcfce7'; // Green full
+                    simpleCounter.style.borderColor = '#22c55e';
                 } else {
-                    counterBadge.style.background = 'linear-gradient(135deg,#3b82f6,#2563eb)'; // Blue default
+                    simpleCounter.style.background = '#f0f9ff'; // Blue default
+                    simpleCounter.style.borderColor = '#3b82f6';
                 }
             } else {
-                counterBadge.style.display = 'none';
+                simpleCounter.style.display = 'none';
             }
             
             selectedFiles.forEach((file, index) => {
@@ -1221,8 +1220,8 @@
                 uploadBtn.textContent = '📤 Upload Documents';
                 uploadBtn.disabled = false;
                 
-                // Hide counter badge
-                document.getElementById('documentCounter').style.display = 'none';
+                // Hide simple counter
+                document.getElementById('simpleCounter').style.display = 'none';
                 
                 setTimeout(() => {
                     uploadSuccess.classList.remove('show');
