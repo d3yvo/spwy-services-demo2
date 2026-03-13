@@ -240,7 +240,7 @@
             color: #374151;
         }
 
-        .form-group input {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 0.875rem;
             border: 2px solid #e5e7eb;
@@ -249,7 +249,7 @@
             transition: border-color 0.3s;
         }
 
-        .form-group input:focus {
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             outline: none;
             border-color: var(--blue);
         }
@@ -411,6 +411,22 @@
         }
 
         .success-message.show {
+            display: block;
+        }
+
+        .error-message {
+            display: none;
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .error-message.show {
             display: block;
         }
 
@@ -659,14 +675,12 @@
                 
                 <!-- SUCCESS MESSAGE -->
                 <div class="success-message" id="uploadSuccess"></div>
+                
+                <!-- ERROR MESSAGE -->
+                <div class="error-message" id="uploadError"></div>
 
                 <!-- UPLOAD FORM -->
-                <form action="https://formspree.io/f/mojnwgne" method="POST" enctype="multipart/form-data" id="uploadForm">
-                    
-                    <!-- Hidden Fields -->
-                    <input type="hidden" name="_subject" value="📤 New Document Upload - SPWY Services">
-                    <input type="hidden" name="_next" value="?uploaded=yes#upload">
-                    <input type="hidden" name="_template" value="table">
+                <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
 
                     <div class="form-row">
                         <div class="form-group">
@@ -700,7 +714,7 @@
                         <input 
                             type="file" 
                             id="fileInput" 
-                            name="file"
+                            name="files[]"
                             multiple 
                             accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx" 
                             required
@@ -757,11 +771,9 @@
             
             <div class="contact-form">
                 <div class="success-message" id="contactSuccess"></div>
+                <div class="error-message" id="contactError"></div>
                 
-                <form action="https://formspree.io/f/mojnwgne" method="POST" id="contactForm">
-                    <input type="hidden" name="_subject" value="💬 New Contact Form Submission - SPWY Services">
-                    <input type="hidden" name="_next" value="?contacted=yes#contact">
-                    
+                <form action="contact.php" method="POST" id="contactForm">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -779,7 +791,7 @@
 
                     <div class="form-group">
                         <label for="service">Service Interested In</label>
-                        <select id="service" name="service" style="width:100%;padding:0.875rem;border:2px solid #e5e7eb;border-radius:8px;font-size:1rem">
+                        <select id="service" name="service">
                             <option>Tax Preparation</option>
                             <option>Translation Services</option>
                             <option>Business Planning</option>
@@ -790,7 +802,7 @@
 
                     <div class="form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required style="width:100%;padding:0.875rem;border:2px solid #e5e7eb;border-radius:8px;font-size:1rem;font-family:inherit;resize:vertical"></textarea>
+                        <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
 
                     <button type="submit" class="form-submit" id="contactBtn">
@@ -849,6 +861,7 @@
         const uploadBtn = document.getElementById('uploadBtn');
         const uploadForm = document.getElementById('uploadForm');
         const uploadSuccess = document.getElementById('uploadSuccess');
+        const uploadError = document.getElementById('uploadError');
 
         // Listen for file selection
         fileInput.addEventListener('change', function() {
@@ -963,70 +976,108 @@
         }
 
         // Form submission
-        uploadForm.addEventListener('submit', function(e) {
+        uploadForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
             const files = fileInput.files;
             
             if (files.length === 0) {
-                e.preventDefault();
-                alert('Please select at least one file.');
+                showError('uploadError', 'Please select at least one file.');
                 return;
             }
             
             if (files.length > MAX_FILES) {
-                e.preventDefault();
-                alert(`Maximum ${MAX_FILES} files allowed.`);
+                showError('uploadError', `Maximum ${MAX_FILES} files allowed.`);
                 return;
             }
             
             for (let file of files) {
                 if (file.size > MAX_FILE_SIZE) {
-                    e.preventDefault();
-                    alert(`File "${file.name}" exceeds 10MB.`);
+                    showError('uploadError', `File "${file.name}" exceeds 10MB.`);
                     return;
                 }
             }
             
             uploadBtn.textContent = '⏳ Uploading...';
             uploadBtn.disabled = true;
+            uploadError.classList.remove('show');
+            uploadSuccess.classList.remove('show');
+            
+            const formData = new FormData(uploadForm);
+            
+            try {
+                const response = await fetch('upload.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    uploadSuccess.innerHTML = '✅ ' + result.message;
+                    uploadSuccess.classList.add('show');
+                    uploadForm.reset();
+                    fileList.innerHTML = '';
+                    documentCounter.classList.remove('show');
+                    uploadSuccess.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    showError('uploadError', result.message);
+                }
+            } catch (error) {
+                console.error('Upload error:', error);
+                showError('uploadError', 'Upload failed. Please try again or email us at spwyservices@gmail.com');
+            } finally {
+                uploadBtn.textContent = '📤 Upload Documents';
+                uploadBtn.disabled = false;
+            }
         });
 
-        // ═══════════════════════════════════════════
-        // SUCCESS MESSAGES
-        // ═══════════════════════════════════════════
-        
-        window.addEventListener('load', function() {
-            const params = new URLSearchParams(window.location.search);
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            // Upload success
-            if (params.get('uploaded') === 'yes') {
-                uploadSuccess.innerHTML = '✅ Success! Your documents have been uploaded. We\'ll contact you within 24 hours.';
-                uploadSuccess.classList.add('show');
-                uploadSuccess.scrollIntoView({ behavior: 'smooth' });
-                
-                setTimeout(() => {
-                    window.history.replaceState({}, document.title, window.location.pathname + '#upload');
-                }, 100);
-            }
-            
-            // Contact success
-            if (params.get('contacted') === 'yes') {
-                const contactSuccess = document.getElementById('contactSuccess');
-                contactSuccess.innerHTML = '✅ Thank you! Your message has been sent. We\'ll respond within 24 hours.';
-                contactSuccess.classList.add('show');
-                contactSuccess.scrollIntoView({ behavior: 'smooth' });
-                
-                setTimeout(() => {
-                    window.history.replaceState({}, document.title, window.location.pathname + '#contact');
-                }, 100);
-            }
-        });
-
-        // Contact form
-        document.getElementById('contactForm').addEventListener('submit', function() {
             const contactBtn = document.getElementById('contactBtn');
+            const contactSuccess = document.getElementById('contactSuccess');
+            const contactError = document.getElementById('contactError');
+            
             contactBtn.textContent = '⏳ Sending...';
             contactBtn.disabled = true;
+            contactError.classList.remove('show');
+            contactSuccess.classList.remove('show');
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('contact.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    contactSuccess.innerHTML = '✅ ' + result.message;
+                    contactSuccess.classList.add('show');
+                    this.reset();
+                    contactSuccess.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    showError('contactError', result.message);
+                }
+            } catch (error) {
+                console.error('Contact error:', error);
+                showError('contactError', 'Failed to send message. Please try again or call us at (954) 774-2606');
+            } finally {
+                contactBtn.textContent = '📧 Send Message';
+                contactBtn.disabled = false;
+            }
         });
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.innerHTML = '❌ ' + message;
+            errorElement.classList.add('show');
+            errorElement.scrollIntoView({ behavior: 'smooth' });
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
