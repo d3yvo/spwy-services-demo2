@@ -7,11 +7,7 @@
     <meta name="description" content="Expert tax preparation, translation services, business planning, and USCIS form assistance in Delray Beach, Florida.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --navy: #0f1f3d;
@@ -23,9 +19,7 @@
             --white: #ffffff;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -65,9 +59,7 @@
             text-decoration: none;
         }
 
-        .logo span {
-            color: var(--accent);
-        }
+        .logo span { color: var(--accent); }
 
         .nav-menu {
             display: flex;
@@ -83,13 +75,7 @@
             transition: color 0.3s;
         }
 
-        .nav-menu a:hover {
-            color: var(--accent);
-        }
-
-        .hamburger {
-            display: none;
-        }
+        .nav-menu a:hover { color: var(--accent); }
 
         /* HERO */
         .hero {
@@ -133,14 +119,10 @@
             margin: 0.5rem;
         }
 
-        .btn-primary {
-            background: var(--accent);
-            color: var(--navy);
-        }
-
+        .btn-primary { background: var(--accent); color: var(--navy); }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 25px rgba(56,189,248,0.3);
         }
 
         .btn-secondary {
@@ -149,15 +131,10 @@
             border: 2px solid white;
         }
 
-        .btn-secondary:hover {
-            background: white;
-            color: var(--navy);
-        }
+        .btn-secondary:hover { background: white; color: var(--navy); }
 
         /* SECTIONS */
-        section {
-            padding: 5rem 1.5rem;
-        }
+        section { padding: 5rem 1.5rem; }
 
         .section-header {
             text-align: center;
@@ -198,10 +175,7 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
 
-        .service-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-        }
+        .service-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
 
         .service-card h3 {
             font-size: 1.5rem;
@@ -210,15 +184,10 @@
             margin-bottom: 1rem;
         }
 
-        .service-card p {
-            color: var(--gray);
-            line-height: 1.8;
-        }
+        .service-card p { color: var(--gray); line-height: 1.8; }
 
         /* UPLOAD SECTION */
-        .upload-section {
-            background: var(--light-gray);
-        }
+        .upload-section { background: var(--light-gray); }
 
         .upload-container {
             max-width: 800px;
@@ -229,9 +198,7 @@
             box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+        .form-group { margin-bottom: 1.5rem; }
 
         .form-group label {
             display: block;
@@ -240,16 +207,21 @@
             color: #374151;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 0.875rem;
             border: 2px solid #e5e7eb;
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s;
+            font-family: 'Inter', sans-serif;
         }
 
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--blue);
         }
@@ -276,18 +248,11 @@
             background: #eff6ff;
         }
 
-        .file-upload-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
+        .file-upload-icon { font-size: 4rem; margin-bottom: 1rem; }
 
-        #fileInput {
-            display: none;
-        }
+        #fileInput { display: none; }
 
-        .file-list {
-            margin-bottom: 1.5rem;
-        }
+        .file-list { margin-bottom: 1.5rem; }
 
         .file-item {
             display: flex;
@@ -305,23 +270,13 @@
             gap: 1rem;
         }
 
-        .file-icon {
-            font-size: 2rem;
-        }
+        .file-icon { font-size: 2rem; }
 
-        .file-details {
-            text-align: left;
-        }
+        .file-details { text-align: left; }
 
-        .file-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
+        .file-name { font-weight: 600; font-size: 0.95rem; }
 
-        .file-size {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
+        .file-size { font-size: 0.8rem; color: var(--gray); }
 
         .remove-file {
             background: #ef4444;
@@ -335,9 +290,7 @@
             font-weight: bold;
         }
 
-        .remove-file:hover {
-            background: #dc2626;
-        }
+        .remove-file:hover { background: #dc2626; }
 
         /* DOCUMENT COUNTER */
         #documentCounter {
@@ -348,12 +301,10 @@
             border-radius: 14px;
             text-align: center;
             margin-bottom: 1.5rem;
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 20px rgba(59,130,246,0.4);
         }
 
-        #documentCounter.show {
-            display: block;
-        }
+        #documentCounter.show { display: block; }
 
         .counter-number {
             font-size: 4rem;
@@ -368,10 +319,21 @@
             margin-bottom: 0.75rem;
         }
 
-        .counter-limit {
+        .counter-limit { font-size: 0.9rem; opacity: 0.85; }
+
+        /* FILE NOTE BANNER */
+        .file-note {
+            background: #fef9c3;
+            border: 2px solid #fbbf24;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
             font-size: 0.9rem;
-            opacity: 0.85;
+            color: #78350f;
+            line-height: 1.6;
         }
+
+        .file-note strong { display: block; margin-bottom: 4px; }
 
         .form-submit {
             width: 100%;
@@ -384,12 +346,13 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
         }
 
         .form-submit:hover {
             background: #1e40af;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(26, 86, 219, 0.4);
+            box-shadow: 0 6px 20px rgba(26,86,219,0.4);
         }
 
         .form-submit:disabled {
@@ -410,9 +373,7 @@
             font-weight: 600;
         }
 
-        .success-message.show {
-            display: block;
-        }
+        .success-message.show { display: block; }
 
         .error-message {
             display: none;
@@ -426,9 +387,7 @@
             font-weight: 600;
         }
 
-        .error-message.show {
-            display: block;
-        }
+        .error-message.show { display: block; }
 
         /* LOCATIONS */
         .location-card {
@@ -440,10 +399,7 @@
             margin: 0 auto;
         }
 
-        .location-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
+        .location-icon { font-size: 3rem; margin-bottom: 1.5rem; }
 
         .location-card h3 {
             font-size: 1.75rem;
@@ -452,19 +408,12 @@
             margin-bottom: 1.5rem;
         }
 
-        .location-card p {
-            margin-bottom: 1rem;
-            color: var(--gray);
-        }
+        .location-card p { margin-bottom: 1rem; color: var(--gray); }
 
-        .location-card strong {
-            color: var(--navy);
-        }
+        .location-card strong { color: var(--navy); }
 
         /* CONTACT */
-        .contact-section {
-            background: var(--light-gray);
-        }
+        .contact-section { background: var(--light-gray); }
 
         .contact-form {
             max-width: 600px;
@@ -491,10 +440,7 @@
             margin-bottom: 2rem;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
+        .footer-section h3 { margin-bottom: 1rem; color: var(--accent); }
 
         .footer-section p,
         .footer-section a {
@@ -504,9 +450,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .footer-section a:hover {
-            color: var(--accent);
-        }
+        .footer-section a:hover { color: var(--accent); }
 
         .footer-bottom {
             text-align: center;
@@ -553,31 +497,16 @@
 
         .quick-action:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(26, 86, 219, 0.3);
+            box-shadow: 0 6px 16px rgba(26,86,219,0.3);
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-            
-            .section-header h2 {
-                font-size: 2rem;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
+            .hero h1 { font-size: 2.25rem; }
+            .section-header h2 { font-size: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+            .footer-content { grid-template-columns: 1fr; }
             .quick-action {
                 min-width: 100px;
                 font-size: 0.8rem;
@@ -664,23 +593,46 @@
         </div>
     </section>
 
-    <!-- UPLOAD SECTION -->
+    <!-- ══════════════════════════════════════════════════════════
+         UPLOAD SECTION — Now powered by StaticForms
+         Files cannot be attached via StaticForms; client info
+         (name, email, phone) is emailed to spwyservices@gmail.com
+         and the team follows up to collect documents separately.
+    ══════════════════════════════════════════════════════════ -->
     <section class="upload-section" id="upload">
         <div class="container">
             <div class="section-header">
                 <h2>Upload Your Documents</h2>
-                <p>Securely send us your tax documents and files</p>
+                <p>Send us your details and we'll reach out to collect your files</p>
             </div>
             <div class="upload-container">
-                
+
                 <!-- SUCCESS MESSAGE -->
                 <div class="success-message" id="uploadSuccess"></div>
-                
+
                 <!-- ERROR MESSAGE -->
                 <div class="error-message" id="uploadError"></div>
 
-                <!-- UPLOAD FORM -->
-                <form action="upload.php" method="POST" enctype="multipart/form-data" id="uploadForm">
+                <!-- FILE NOTE -->
+                <div class="file-note">
+                    <strong>📎 How document submission works:</strong>
+                    Fill in your contact info and list what documents you have below.
+                    We will email or call you within 24 hours to arrange secure file collection.
+                </div>
+
+                <!-- UPLOAD FORM — StaticForms (no backend needed) -->
+                <form
+                    action="https://api.staticforms.xyz/submit"
+                    method="POST"
+                    id="uploadForm"
+                >
+                    <!-- ── StaticForms required hidden fields ── -->
+                    <input type="hidden" name="accessKey"   value="sf_913406214c601516f0e25d30" />
+                    <input type="hidden" name="subject"     value="📤 New Document Submission – SPWY Services" />
+                    <input type="hidden" name="replyTo"     value="$email" />
+                    <input type="hidden" name="redirectTo"  value="thank-you.html" />
+                    <!-- Honeypot — catches spam bots, leave as-is -->
+                    <input type="text"   name="honeypot"    style="display:none" tabindex="-1" autocomplete="off" />
 
                     <div class="form-row">
                         <div class="form-group">
@@ -705,34 +657,30 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Select Documents to Upload (Up to 15 files) *</label>
-                        <div class="file-upload-area" onclick="document.getElementById('fileInput').click()">
-                            <div class="file-upload-icon">📁</div>
-                            <p><strong>Click to select files</strong> or drag and drop</p>
-                            <p style="font-size:0.875rem;color:var(--gray);margin-top:0.5rem">Accepted: PDF, JPG, PNG, DOC, DOCX, XLS, XLSX (Max 10MB per file)</p>
-                        </div>
-                        <input 
-                            type="file" 
-                            id="fileInput" 
-                            name="files[]"
-                            multiple 
-                            accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx" 
-                            required
-                        >
+                        <label for="serviceType">Service Needed *</label>
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="">— Select a service —</option>
+                            <option>Tax Preparation</option>
+                            <option>Translation Services</option>
+                            <option>Business Planning</option>
+                            <option>USCIS Form Assistance</option>
+                            <option>Other</option>
+                        </select>
                     </div>
 
-                    <!-- FILE LIST -->
-                    <div class="file-list" id="fileList"></div>
-
-                    <!-- DOCUMENT COUNTER -->
-                    <div id="documentCounter">
-                        <div class="counter-number" id="counterNumber">0</div>
-                        <div class="counter-text">document<span id="pluralS">s</span> selected</div>
-                        <div class="counter-limit">Maximum: 15 documents</div>
+                    <div class="form-group">
+                        <label for="documentList">List Your Documents *</label>
+                        <textarea
+                            id="documentList"
+                            name="message"
+                            rows="4"
+                            required
+                            placeholder="e.g. W-2 form, 1099, last year's tax return, passport copy..."
+                        ></textarea>
                     </div>
 
                     <button type="submit" class="form-submit" id="uploadBtn">
-                        📤 Upload Documents
+                        📤 Submit Document Request
                     </button>
                 </form>
             </div>
@@ -751,29 +699,45 @@
                 <h3>Florida Office</h3>
                 <p><strong>📍 Address:</strong><br>1300 NW 17th Ave<br>Delray Beach, FL 33445</p>
                 <p><strong>📞 Phone:</strong> <a href="tel:9547742606" style="color:var(--blue)">(954) 774-2606</a></p>
-                <p><strong>📧 Email:</strong> <a href="/cdn-cgi/l/email-protection#3f4c4f48464c5a4d49565c5a4c7f58525e5653115c5052" style="color:var(--blue)"><span class="__cf_email__" data-cfemail="2b585b5c52584e595d42484e586b4c464a424705484446">[email&#160;protected]</span></a></p>
-                <p><strong>⏰ Hours:</strong><br>Monday - Saturday: 10:00 AM - 7:00 PM<br>Sunday: Closed</p>
+                <p><strong>📧 Email:</strong> <a href="mailto:spwyservices@gmail.com" style="color:var(--blue)">spwyservices@gmail.com</a></p>
+                <p><strong>⏰ Hours:</strong><br>Monday – Saturday: 10:00 AM – 7:00 PM<br>Sunday: Closed</p>
                 <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center">
                     <a href="tel:9547742606" class="btn btn-primary">📞 Call Now</a>
-                    <a href="https://maps.google.com/?q=1300+NW+17th+Ave+Delray+Beach+FL+33445" target="_blank" class="btn btn-secondary">🗺️ Directions</a>
+                    <a href="https://maps.google.com/?q=1300+NW+17th+Ave+Delray+Beach+FL+33445" target="_blank" class="btn btn-secondary" style="color:#0f1f3d;border-color:#0f1f3d">🗺️ Directions</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- ══════════════════════════════════════════════════════════
+         CONTACT SECTION — Now powered by StaticForms
+         Submits to spwyservices@gmail.com with no backend needed
+    ══════════════════════════════════════════════════════════ -->
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="section-header">
                 <h2>Get In Touch</h2>
                 <p>Send us a message and we'll respond within 24 hours</p>
             </div>
-            
+
             <div class="contact-form">
                 <div class="success-message" id="contactSuccess"></div>
-                <div class="error-message" id="contactError"></div>
-                
-                <form action="contact.php" method="POST" id="contactForm">
+                <div class="error-message"   id="contactError"></div>
+
+                <!-- CONTACT FORM — StaticForms (no backend needed) -->
+                <form
+                    action="https://api.staticforms.xyz/submit"
+                    method="POST"
+                    id="contactForm"
+                >
+                    <!-- ── StaticForms required hidden fields ── -->
+                    <input type="hidden" name="accessKey"   value="sf_913406214c601516f0e25d30" />
+                    <input type="hidden" name="subject"     value="📧 New Contact Message – SPWY Services" />
+                    <input type="hidden" name="replyTo"     value="$email" />
+                    <input type="hidden" name="redirectTo"  value="thank-you.html" />
+                    <!-- Honeypot — catches spam bots, leave as-is -->
+                    <input type="text"   name="honeypot"    style="display:none" tabindex="-1" autocomplete="off" />
+
                     <div class="form-group">
                         <label for="name">Full Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -830,12 +794,12 @@
             <div class="footer-section">
                 <h3>Contact Info</h3>
                 <p>📞 (954) 774-2606</p>
-                <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="631013141a100611150a00061023040e020a0f4d000c0e">[email&#160;protected]</a></p>
+                <p>📧 spwyservices@gmail.com</p>
                 <p>📍 1300 NW 17th Ave<br>Delray Beach, FL 33445</p>
             </div>
             <div class="footer-section">
                 <h3>Hours</h3>
-                <p>Monday - Saturday<br>10:00 AM - 7:00 PM</p>
+                <p>Monday – Saturday<br>10:00 AM – 7:00 PM</p>
                 <p>Sunday: Closed</p>
             </div>
         </div>
@@ -845,239 +809,97 @@
     </footer>
 
     <!-- JAVASCRIPT -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // ═══════════════════════════════════════════
-        // FILE UPLOAD FUNCTIONALITY
+        // UPLOAD FORM — client-side validation only
+        // StaticForms handles the actual submission
         // ═══════════════════════════════════════════
-        
-        const MAX_FILES = 15;
-        const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-        
-        const fileInput = document.getElementById('fileInput');
-        const fileList = document.getElementById('fileList');
-        const documentCounter = document.getElementById('documentCounter');
-        const counterNumber = document.getElementById('counterNumber');
-        const pluralS = document.getElementById('pluralS');
-        const uploadBtn = document.getElementById('uploadBtn');
-        const uploadForm = document.getElementById('uploadForm');
+
+        const uploadForm   = document.getElementById('uploadForm');
+        const uploadBtn    = document.getElementById('uploadBtn');
+        const uploadError  = document.getElementById('uploadError');
         const uploadSuccess = document.getElementById('uploadSuccess');
-        const uploadError = document.getElementById('uploadError');
 
-        // Listen for file selection
-        fileInput.addEventListener('change', function() {
-            console.log('Files selected:', fileInput.files.length);
-            updateFileDisplay();
-        });
-
-        // Update file display
-        function updateFileDisplay() {
-            const files = fileInput.files;
-            const fileCount = files.length;
-            
-            // Clear file list
-            fileList.innerHTML = '';
-            
-            if (fileCount > 0) {
-                // SHOW COUNTER
-                documentCounter.classList.add('show');
-                counterNumber.textContent = fileCount;
-                pluralS.textContent = fileCount === 1 ? '' : 's';
-                
-                // Update button
-                uploadBtn.textContent = `📤 Upload ${fileCount} Document${fileCount > 1 ? 's' : ''}`;
-                
-                // Change counter color
-                if (fileCount >= 14) {
-                    documentCounter.style.background = 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)';
-                } else if (fileCount === 15) {
-                    documentCounter.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-                } else {
-                    documentCounter.style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
-                }
-                
-                // Display files
-                Array.from(files).forEach((file, index) => {
-                    const fileItem = document.createElement('div');
-                    fileItem.className = 'file-item';
-                    
-                    const icon = getFileIcon(file.name);
-                    const size = formatFileSize(file.size);
-                    
-                    fileItem.innerHTML = `
-                        <div class="file-info">
-                            <span class="file-icon">${icon}</span>
-                            <div class="file-details">
-                                <div class="file-name">${file.name}</div>
-                                <div class="file-size">${size}</div>
-                            </div>
-                        </div>
-                        <button type="button" class="remove-file" onclick="removeFile(${index})">×</button>
-                    `;
-                    
-                    fileList.appendChild(fileItem);
-                });
-                
-                // Validate
-                if (fileCount > MAX_FILES) {
-                    alert(`Maximum ${MAX_FILES} files allowed.`);
-                    fileInput.value = '';
-                    updateFileDisplay();
-                    return;
-                }
-                
-                for (let file of files) {
-                    if (file.size > MAX_FILE_SIZE) {
-                        alert(`File "${file.name}" exceeds 10MB limit.`);
-                        fileInput.value = '';
-                        updateFileDisplay();
-                        return;
-                    }
-                }
-            } else {
-                // HIDE COUNTER
-                documentCounter.classList.remove('show');
-                uploadBtn.textContent = '📤 Upload Documents';
-            }
-        }
-
-        // Remove file
-        function removeFile(indexToRemove) {
-            const dt = new DataTransfer();
-            const files = Array.from(fileInput.files);
-            
-            files.forEach((file, index) => {
-                if (index !== indexToRemove) {
-                    dt.items.add(file);
-                }
-            });
-            
-            fileInput.files = dt.files;
-            updateFileDisplay();
-        }
-
-        // Get file icon
-        function getFileIcon(filename) {
-            const ext = filename.split('.').pop().toLowerCase();
-            const icons = {
-                'pdf': '📄', 'doc': '📝', 'docx': '📝',
-                'xls': '📊', 'xlsx': '📊',
-                'jpg': '🖼️', 'jpeg': '🖼️', 'png': '🖼️'
-            };
-            return icons[ext] || '📎';
-        }
-
-        // Format file size
-        function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
-        }
-
-        // Form submission
-        uploadForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const files = fileInput.files;
-            
-            if (files.length === 0) {
-                showError('uploadError', 'Please select at least one file.');
-                return;
-            }
-            
-            if (files.length > MAX_FILES) {
-                showError('uploadError', `Maximum ${MAX_FILES} files allowed.`);
-                return;
-            }
-            
-            for (let file of files) {
-                if (file.size > MAX_FILE_SIZE) {
-                    showError('uploadError', `File "${file.name}" exceeds 10MB.`);
-                    return;
-                }
-            }
-            
-            uploadBtn.textContent = '⏳ Uploading...';
-            uploadBtn.disabled = true;
+        uploadForm.addEventListener('submit', function(e) {
             uploadError.classList.remove('show');
             uploadSuccess.classList.remove('show');
-            
-            const formData = new FormData(uploadForm);
-            
-            try {
-                const response = await fetch('upload.php', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    uploadSuccess.innerHTML = '✅ ' + result.message;
-                    uploadSuccess.classList.add('show');
-                    uploadForm.reset();
-                    fileList.innerHTML = '';
-                    documentCounter.classList.remove('show');
-                    uploadSuccess.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    showError('uploadError', result.message);
-                }
-            } catch (error) {
-                console.error('Upload error:', error);
-                showError('uploadError', 'Upload failed. Please try again or email us at spwyservices@gmail.com');
-            } finally {
-                uploadBtn.textContent = '📤 Upload Documents';
-                uploadBtn.disabled = false;
+
+            const firstName    = document.getElementById('firstName').value.trim();
+            const lastName     = document.getElementById('lastName').value.trim();
+            const uploadEmail  = document.getElementById('uploadEmail').value.trim();
+            const uploadPhone  = document.getElementById('uploadPhone').value.trim();
+            const serviceType  = document.getElementById('serviceType').value;
+            const documentList = document.getElementById('documentList').value.trim();
+
+            if (!firstName || !lastName || !uploadEmail || !uploadPhone || !serviceType || !documentList) {
+                e.preventDefault();
+                showError('uploadError', 'Please fill in all required fields before submitting.');
+                uploadError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
             }
+
+            // Honeypot check
+            const hp = uploadForm.querySelector('[name="honeypot"]');
+            if (hp && hp.value.trim() !== '') { e.preventDefault(); return; }
+
+            // All good — let StaticForms take over
+            uploadBtn.textContent = '⏳ Sending...';
+            uploadBtn.disabled = true;
         });
 
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const contactBtn = document.getElementById('contactBtn');
-            const contactSuccess = document.getElementById('contactSuccess');
-            const contactError = document.getElementById('contactError');
-            
+        // ═══════════════════════════════════════════
+        // CONTACT FORM — client-side validation only
+        // StaticForms handles the actual submission
+        // ═══════════════════════════════════════════
+
+        const contactForm = document.getElementById('contactForm');
+        const contactBtn  = document.getElementById('contactBtn');
+        const contactError = document.getElementById('contactError');
+
+        contactForm.addEventListener('submit', function(e) {
+            contactError.classList.remove('show');
+
+            const name    = document.getElementById('name').value.trim();
+            const email   = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                e.preventDefault();
+                showError('contactError', 'Please fill in your name, email, and message.');
+                contactError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Honeypot check
+            const hp = contactForm.querySelector('[name="honeypot"]');
+            if (hp && hp.value.trim() !== '') { e.preventDefault(); return; }
+
+            // All good — let StaticForms take over
             contactBtn.textContent = '⏳ Sending...';
             contactBtn.disabled = true;
-            contactError.classList.remove('show');
-            contactSuccess.classList.remove('show');
-            
-            const formData = new FormData(this);
-            
-            try {
-                const response = await fetch('contact.php', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    contactSuccess.innerHTML = '✅ ' + result.message;
-                    contactSuccess.classList.add('show');
-                    this.reset();
-                    contactSuccess.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    showError('contactError', result.message);
-                }
-            } catch (error) {
-                console.error('Contact error:', error);
-                showError('contactError', 'Failed to send message. Please try again or call us at (954) 774-2606');
-            } finally {
-                contactBtn.textContent = '📧 Send Message';
-                contactBtn.disabled = false;
-            }
         });
 
+        // ═══════════════════════════════════════════
+        // SHARED HELPERS
+        // ═══════════════════════════════════════════
+
         function showError(elementId, message) {
-            const errorElement = document.getElementById(elementId);
-            errorElement.innerHTML = '❌ ' + message;
-            errorElement.classList.add('show');
-            errorElement.scrollIntoView({ behavior: 'smooth' });
+            const el = document.getElementById(elementId);
+            el.innerHTML = '❌ ' + message;
+            el.classList.add('show');
         }
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(ancho
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
