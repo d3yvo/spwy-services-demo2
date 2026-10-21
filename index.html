@@ -33,7 +33,6 @@
             padding: 0 1.5rem;
         }
 
-        /* NAVIGATION */
         nav {
             background: var(--navy);
             padding: 1rem 0;
@@ -77,7 +76,6 @@
 
         .nav-menu a:hover { color: var(--accent); }
 
-        /* HERO */
         .hero {
             background: linear-gradient(135deg, var(--navy) 0%, #1a2942 100%);
             color: white;
@@ -133,7 +131,6 @@
 
         .btn-secondary:hover { background: white; color: var(--navy); }
 
-        /* SECTIONS */
         section { padding: 5rem 1.5rem; }
 
         .section-header {
@@ -153,7 +150,6 @@
             color: var(--gray);
         }
 
-        /* SERVICES */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -186,11 +182,11 @@
 
         .service-card p { color: var(--gray); line-height: 1.8; }
 
-        /* UPLOAD SECTION */
         .upload-section { background: var(--light-gray); }
 
-        .upload-container {
-            max-width: 800px;
+        .upload-container,
+        .contact-form {
+            max-width: 700px;
             margin: 0 auto;
             background: white;
             padding: 3rem;
@@ -215,8 +211,10 @@
             border: 2px solid #e5e7eb;
             border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s;
             font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+            color: #1f2937;
+            background: white;
         }
 
         .form-group input:focus,
@@ -231,109 +229,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
-
-        .file-upload-area {
-            border: 3px dashed #cbd5e0;
-            border-radius: 12px;
-            padding: 3rem 2rem;
-            text-align: center;
-            cursor: pointer;
-            background: #f8fafc;
-            transition: all 0.3s;
-            margin-bottom: 1.5rem;
-        }
-
-        .file-upload-area:hover {
-            border-color: var(--blue);
-            background: #eff6ff;
-        }
-
-        .file-upload-icon { font-size: 4rem; margin-bottom: 1rem; }
-
-        #fileInput { display: none; }
-
-        .file-list { margin-bottom: 1.5rem; }
-
-        .file-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background: #f1f5f9;
-            border-radius: 10px;
-            margin-bottom: 0.75rem;
-        }
-
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .file-icon { font-size: 2rem; }
-
-        .file-details { text-align: left; }
-
-        .file-name { font-weight: 600; font-size: 0.95rem; }
-
-        .file-size { font-size: 0.8rem; color: var(--gray); }
-
-        .remove-file {
-            background: #ef4444;
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .remove-file:hover { background: #dc2626; }
-
-        /* DOCUMENT COUNTER */
-        #documentCounter {
-            display: none;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 14px;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 20px rgba(59,130,246,0.4);
-        }
-
-        #documentCounter.show { display: block; }
-
-        .counter-number {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .counter-text {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .counter-limit { font-size: 0.9rem; opacity: 0.85; }
-
-        /* FILE NOTE BANNER */
-        .file-note {
-            background: #fef9c3;
-            border: 2px solid #fbbf24;
-            border-radius: 10px;
-            padding: 1rem 1.25rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: #78350f;
-            line-height: 1.6;
-        }
-
-        .file-note strong { display: block; margin-bottom: 4px; }
 
         .form-submit {
             width: 100%;
@@ -359,37 +254,46 @@
             background: #9ca3af;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
 
-        .success-message {
+        .alert {
             display: none;
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .alert.show { display: block; }
+
+        .alert-success {
             background: #dcfce7;
             border: 2px solid var(--green);
             color: #166534;
-            padding: 1.25rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 600;
         }
 
-        .success-message.show { display: block; }
-
-        .error-message {
-            display: none;
+        .alert-error {
             background: #fee2e2;
             border: 2px solid #ef4444;
             color: #991b1b;
-            padding: 1.25rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 600;
         }
 
-        .error-message.show { display: block; }
+        .file-note {
+            background: #eff6ff;
+            border: 2px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #1e40af;
+            line-height: 1.6;
+        }
 
-        /* LOCATIONS */
+        .file-note strong { display: block; margin-bottom: 4px; color: #1e3a8a; }
+
         .location-card {
             background: white;
             padding: 2.5rem;
@@ -397,6 +301,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             max-width: 600px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .location-icon { font-size: 3rem; margin-bottom: 1.5rem; }
@@ -409,22 +314,10 @@
         }
 
         .location-card p { margin-bottom: 1rem; color: var(--gray); }
-
         .location-card strong { color: var(--navy); }
 
-        /* CONTACT */
         .contact-section { background: var(--light-gray); }
 
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-        }
-
-        /* FOOTER */
         footer {
             background: var(--navy);
             color: white;
@@ -433,11 +326,10 @@
 
         .footer-content {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
-            margin-bottom: 2rem;
         }
 
         .footer-section h3 { margin-bottom: 1rem; color: var(--accent); }
@@ -457,9 +349,10 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: rgba(255,255,255,0.6);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* QUICK BAR */
         .quick-bar {
             position: fixed;
             bottom: 0;
@@ -500,7 +393,6 @@
             box-shadow: 0 6px 16px rgba(26,86,219,0.3);
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.25rem; }
             .section-header h2 { font-size: 2rem; }
@@ -512,6 +404,8 @@
                 font-size: 0.8rem;
                 padding: 0.75rem 1rem;
             }
+            .upload-container,
+            .contact-form { padding: 2rem 1.25rem; }
         }
     </style>
 </head>
@@ -535,25 +429,17 @@
     <!-- QUICK ACTION BAR -->
     <div class="quick-bar">
         <div class="quick-bar-inner">
-            <a href="https://calendly.com/spwyservices/30-min-free-consultation" target="_blank" class="quick-action">
-                📅 30 Minute Consultation
-            </a>
-            <a href="https://calendly.com/spwyservices/30-min-free-consultation" target="_blank" class="quick-action">
-                💻 VIRTUAL TAX PREP
-            </a>
-            <a href="#upload" class="quick-action">
-                📤 Upload Documents
-            </a>
-            <a href="tel:9547742606" class="quick-action">
-                📞 Call Now
-            </a>
+            <a href="https://calendly.com/spwyservices/30-min-free-consultation" target="_blank" class="quick-action">📅 30 Min Consultation</a>
+            <a href="https://calendly.com/spwyservices/30-min-free-consultation" target="_blank" class="quick-action">💻 Virtual Tax Prep</a>
+            <a href="#upload" class="quick-action">📤 Upload Documents</a>
+            <a href="tel:9547742606" class="quick-action">📞 Call Now</a>
         </div>
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero" id="home">
         <div class="badge">🏆 7+ Years of Excellence</div>
-        <h1>Professional Tax & Financial Services</h1>
+        <h1>Professional Tax &amp; Financial Services</h1>
         <p class="hero-subtitle">Expert tax preparation, translation, business planning, and USCIS assistance in Florida</p>
         <div>
             <a href="tel:9547742606" class="btn btn-primary">📞 Call (954) 774-2606</a>
@@ -561,7 +447,7 @@
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
+    <!-- SERVICES -->
     <section id="services">
         <div class="container">
             <div class="section-header">
@@ -593,72 +479,52 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════════════
-         UPLOAD SECTION — Now powered by StaticForms
-         Files cannot be attached via StaticForms; client info
-         (name, email, phone) is emailed to spwyservices@gmail.com
-         and the team follows up to collect documents separately.
-    ══════════════════════════════════════════════════════════ -->
+    <!-- UPLOAD SECTION -->
     <section class="upload-section" id="upload">
         <div class="container">
             <div class="section-header">
                 <h2>Upload Your Documents</h2>
-                <p>Send us your details and we'll reach out to collect your files</p>
+                <p>Send us your details and we will reach out to collect your files securely</p>
             </div>
             <div class="upload-container">
 
-                <!-- SUCCESS MESSAGE -->
-                <div class="success-message" id="uploadSuccess"></div>
+                <div class="alert alert-success" id="uploadSuccess"></div>
+                <div class="alert alert-error"   id="uploadError"></div>
 
-                <!-- ERROR MESSAGE -->
-                <div class="error-message" id="uploadError"></div>
-
-                <!-- FILE NOTE -->
                 <div class="file-note">
-                    <strong>📎 How document submission works:</strong>
-                    Fill in your contact info and list what documents you have below.
-                    We will email or call you within 24 hours to arrange secure file collection.
+                    <strong>📎 How it works:</strong>
+                    Fill in your contact info and describe your documents below.
+                    We will contact you within 24 hours to arrange secure file collection.
                 </div>
 
-                <!-- UPLOAD FORM — StaticForms (no backend needed) -->
-                <form
-                    action="https://api.staticforms.xyz/submit"
-                    method="POST"
-                    id="uploadForm"
-                >
-                    <!-- ── StaticForms required hidden fields ── -->
-                    <input type="hidden" name="accessKey"   value="sf_913406214c601516f0e25d30" />
-                    <input type="hidden" name="subject"     value="📤 New Document Submission – SPWY Services" />
-                    <input type="hidden" name="replyTo"     value="$email" />
-                    <input type="hidden" name="redirectTo"  value="thank-you.html" />
-                    <!-- Honeypot — catches spam bots, leave as-is -->
-                    <input type="text"   name="honeypot"    style="display:none" tabindex="-1" autocomplete="off" />
+                <!-- No action or method — JS handles the submission via fetch() -->
+                <form id="uploadForm" novalidate>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
+                            <label for="upFirstName">First Name *</label>
+                            <input type="text" id="upFirstName" placeholder="Maria" required>
                         </div>
                         <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
+                            <label for="upLastName">Last Name *</label>
+                            <input type="text" id="upLastName" placeholder="Garcia" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="uploadEmail">Email Address *</label>
-                            <input type="email" id="uploadEmail" name="email" required>
+                            <label for="upEmail">Email Address *</label>
+                            <input type="email" id="upEmail" placeholder="you@email.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="uploadPhone">Phone Number *</label>
-                            <input type="tel" id="uploadPhone" name="phone" required placeholder="(954) 123-4567">
+                            <label for="upPhone">Phone Number *</label>
+                            <input type="tel" id="upPhone" placeholder="(954) 123-4567" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="serviceType">Service Needed *</label>
-                        <select id="serviceType" name="serviceType" required>
+                        <label for="upService">Service Needed *</label>
+                        <select id="upService" required>
                             <option value="">— Select a service —</option>
                             <option>Tax Preparation</option>
                             <option>Translation Services</option>
@@ -669,17 +535,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="documentList">List Your Documents *</label>
-                        <textarea
-                            id="documentList"
-                            name="message"
-                            rows="4"
-                            required
-                            placeholder="e.g. W-2 form, 1099, last year's tax return, passport copy..."
-                        ></textarea>
+                        <label for="upDocs">List Your Documents *</label>
+                        <textarea id="upDocs" rows="4" placeholder="e.g. W-2 form, 1099, last year's tax return, passport copy..." required></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit" id="uploadBtn">
+                    <button type="button" class="form-submit" id="uploadBtn" onclick="submitUploadForm()">
                         📤 Submit Document Request
                     </button>
                 </form>
@@ -687,7 +547,7 @@
         </div>
     </section>
 
-    <!-- LOCATIONS SECTION -->
+    <!-- LOCATIONS -->
     <section id="locations">
         <div class="container">
             <div class="section-header">
@@ -701,61 +561,47 @@
                 <p><strong>📞 Phone:</strong> <a href="tel:9547742606" style="color:var(--blue)">(954) 774-2606</a></p>
                 <p><strong>📧 Email:</strong> <a href="mailto:spwyservices@gmail.com" style="color:var(--blue)">spwyservices@gmail.com</a></p>
                 <p><strong>⏰ Hours:</strong><br>Monday – Saturday: 10:00 AM – 7:00 PM<br>Sunday: Closed</p>
-                <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center">
+                <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
                     <a href="tel:9547742606" class="btn btn-primary">📞 Call Now</a>
-                    <a href="https://maps.google.com/?q=1300+NW+17th+Ave+Delray+Beach+FL+33445" target="_blank" class="btn btn-secondary" style="color:#0f1f3d;border-color:#0f1f3d">🗺️ Directions</a>
+                    <a href="https://maps.google.com/?q=1300+NW+17th+Ave+Delray+Beach+FL+33445" target="_blank" class="btn" style="background:#e2e8f0;color:var(--navy)">🗺️ Directions</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════════════
-         CONTACT SECTION — Now powered by StaticForms
-         Submits to spwyservices@gmail.com with no backend needed
-    ══════════════════════════════════════════════════════════ -->
+    <!-- CONTACT -->
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="section-header">
                 <h2>Get In Touch</h2>
                 <p>Send us a message and we'll respond within 24 hours</p>
             </div>
-
             <div class="contact-form">
-                <div class="success-message" id="contactSuccess"></div>
-                <div class="error-message"   id="contactError"></div>
 
-                <!-- CONTACT FORM — StaticForms (no backend needed) -->
-                <form
-                    action="https://api.staticforms.xyz/submit"
-                    method="POST"
-                    id="contactForm"
-                >
-                    <!-- ── StaticForms required hidden fields ── -->
-                    <input type="hidden" name="accessKey"   value="sf_913406214c601516f0e25d30" />
-                    <input type="hidden" name="subject"     value="📧 New Contact Message – SPWY Services" />
-                    <input type="hidden" name="replyTo"     value="$email" />
-                    <input type="hidden" name="redirectTo"  value="thank-you.html" />
-                    <!-- Honeypot — catches spam bots, leave as-is -->
-                    <input type="text"   name="honeypot"    style="display:none" tabindex="-1" autocomplete="off" />
+                <div class="alert alert-success" id="contactSuccess"></div>
+                <div class="alert alert-error"   id="contactError"></div>
+
+                <!-- No action or method — JS handles the submission via fetch() -->
+                <form id="contactForm" novalidate>
 
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="ctName">Full Name *</label>
+                        <input type="text" id="ctName" placeholder="Maria Garcia" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="ctEmail">Email Address *</label>
+                        <input type="email" id="ctEmail" placeholder="you@email.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="(954) 123-4567">
+                        <label for="ctPhone">Phone Number</label>
+                        <input type="tel" id="ctPhone" placeholder="(954) 123-4567">
                     </div>
 
                     <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" name="service">
+                        <label for="ctService">Service Interested In</label>
+                        <select id="ctService">
                             <option>Tax Preparation</option>
                             <option>Translation Services</option>
                             <option>Business Planning</option>
@@ -765,11 +611,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="ctMessage">Message *</label>
+                        <textarea id="ctMessage" rows="5" placeholder="How can we help you?" required></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit" id="contactBtn">
+                    <button type="button" class="form-submit" id="contactBtn" onclick="submitContactForm()">
                         📧 Send Message
                     </button>
                 </form>
@@ -808,97 +654,170 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
     <script>
-        // ═══════════════════════════════════════════
-        // UPLOAD FORM — client-side validation only
-        // StaticForms handles the actual submission
-        // ═══════════════════════════════════════════
+    // ═══════════════════════════════════════════════════════
+    // StaticForms — uses fetch() + JSON, NOT native form POST
+    // This avoids the 405 error caused by server-side blocking
+    // ═══════════════════════════════════════════════════════
 
-        const uploadForm   = document.getElementById('uploadForm');
-        const uploadBtn    = document.getElementById('uploadBtn');
-        const uploadError  = document.getElementById('uploadError');
-        const uploadSuccess = document.getElementById('uploadSuccess');
+    const SF_KEY = 'sf_913406214c601516f0e25d30';
+    const SF_URL = 'https://api.staticforms.xyz/submit';
 
-        uploadForm.addEventListener('submit', function(e) {
-            uploadError.classList.remove('show');
-            uploadSuccess.classList.remove('show');
+    // ── Helpers ───────────────────────────────────────────
+    function val(id) {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+    }
 
-            const firstName    = document.getElementById('firstName').value.trim();
-            const lastName     = document.getElementById('lastName').value.trim();
-            const uploadEmail  = document.getElementById('uploadEmail').value.trim();
-            const uploadPhone  = document.getElementById('uploadPhone').value.trim();
-            const serviceType  = document.getElementById('serviceType').value;
-            const documentList = document.getElementById('documentList').value.trim();
+    function showAlert(id, type, msg) {
+        const el = document.getElementById(id);
+        el.className = 'alert alert-' + type + ' show';
+        el.innerHTML = (type === 'success' ? '✅ ' : '❌ ') + msg;
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
-            if (!firstName || !lastName || !uploadEmail || !uploadPhone || !serviceType || !documentList) {
-                e.preventDefault();
-                showError('uploadError', 'Please fill in all required fields before submitting.');
-                uploadError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                return;
-            }
-
-            // Honeypot check
-            const hp = uploadForm.querySelector('[name="honeypot"]');
-            if (hp && hp.value.trim() !== '') { e.preventDefault(); return; }
-
-            // All good — let StaticForms take over
-            uploadBtn.textContent = '⏳ Sending...';
-            uploadBtn.disabled = true;
+    function hideAlerts(...ids) {
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            el.className = 'alert';
+            el.innerHTML = '';
         });
+    }
 
-        // ═══════════════════════════════════════════
-        // CONTACT FORM — client-side validation only
-        // StaticForms handles the actual submission
-        // ═══════════════════════════════════════════
+    function setBtn(id, text, disabled) {
+        const btn = document.getElementById(id);
+        btn.textContent = text;
+        btn.disabled = disabled;
+    }
 
-        const contactForm = document.getElementById('contactForm');
-        const contactBtn  = document.getElementById('contactBtn');
-        const contactError = document.getElementById('contactError');
+    // ── Upload Form ───────────────────────────────────────
+    async function submitUploadForm() {
+        hideAlerts('uploadSuccess', 'uploadError');
 
-        contactForm.addEventListener('submit', function(e) {
-            contactError.classList.remove('show');
+        const firstName = val('upFirstName');
+        const lastName  = val('upLastName');
+        const email     = val('upEmail');
+        const phone     = val('upPhone');
+        const service   = val('upService');
+        const docs      = val('upDocs');
 
-            const name    = document.getElementById('name').value.trim();
-            const email   = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            if (!name || !email || !message) {
-                e.preventDefault();
-                showError('contactError', 'Please fill in your name, email, and message.');
-                contactError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                return;
-            }
-
-            // Honeypot check
-            const hp = contactForm.querySelector('[name="honeypot"]');
-            if (hp && hp.value.trim() !== '') { e.preventDefault(); return; }
-
-            // All good — let StaticForms take over
-            contactBtn.textContent = '⏳ Sending...';
-            contactBtn.disabled = true;
-        });
-
-        // ═══════════════════════════════════════════
-        // SHARED HELPERS
-        // ═══════════════════════════════════════════
-
-        function showError(elementId, message) {
-            const el = document.getElementById(elementId);
-            el.innerHTML = '❌ ' + message;
-            el.classList.add('show');
+        // Validation
+        if (!firstName || !lastName) {
+            showAlert('uploadError', 'error', 'Please enter your first and last name.'); return;
+        }
+        if (!email || !email.includes('@')) {
+            showAlert('uploadError', 'error', 'Please enter a valid email address.'); return;
+        }
+        if (!phone) {
+            showAlert('uploadError', 'error', 'Please enter your phone number.'); return;
+        }
+        if (!service) {
+            showAlert('uploadError', 'error', 'Please select a service.'); return;
+        }
+        if (!docs) {
+            showAlert('uploadError', 'error', 'Please describe the documents you have.'); return;
         }
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+        setBtn('uploadBtn', '⏳ Sending...', true);
+
+        try {
+            const res = await fetch(SF_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    accessKey: SF_KEY,
+                    subject:   '📤 New Document Request – SPWY Services',
+                    name:      firstName + ' ' + lastName,
+                    email:     email,
+                    phone:     phone,
+                    message:   'Service: ' + service + '\n\nDocuments:\n' + docs,
+                    replyTo:   email,
+                })
             });
+
+            const data = await res.json();
+
+            if (data.success) {
+                showAlert('uploadSuccess', 'success',
+                    'Your request was sent! We will contact you within 24 hours.');
+                document.getElementById('uploadForm').reset();
+            } else {
+                showAlert('uploadError', 'error',
+                    data.message || 'Something went wrong. Please call us at (954) 774-2606.');
+            }
+        } catch (err) {
+            console.error(err);
+            showAlert('uploadError', 'error',
+                'Could not send request. Please call us at (954) 774-2606.');
+        } finally {
+            setBtn('uploadBtn', '📤 Submit Document Request', false);
+        }
+    }
+
+    // ── Contact Form ──────────────────────────────────────
+    async function submitContactForm() {
+        hideAlerts('contactSuccess', 'contactError');
+
+        const name    = val('ctName');
+        const email   = val('ctEmail');
+        const phone   = val('ctPhone');
+        const service = val('ctService');
+        const message = val('ctMessage');
+
+        // Validation
+        if (!name) {
+            showAlert('contactError', 'error', 'Please enter your full name.'); return;
+        }
+        if (!email || !email.includes('@')) {
+            showAlert('contactError', 'error', 'Please enter a valid email address.'); return;
+        }
+        if (!message) {
+            showAlert('contactError', 'error', 'Please enter a message.'); return;
+        }
+
+        setBtn('contactBtn', '⏳ Sending...', true);
+
+        try {
+            const res = await fetch(SF_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    accessKey: SF_KEY,
+                    subject:   '📧 New Contact Message – SPWY Services',
+                    name:      name,
+                    email:     email,
+                    phone:     phone || 'Not provided',
+                    message:   'Service Interest: ' + service + '\n\n' + message,
+                    replyTo:   email,
+                })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                showAlert('contactSuccess', 'success',
+                    'Message sent! We will get back to you within 24 hours.');
+                document.getElementById('contactForm').reset();
+            } else {
+                showAlert('contactError', 'error',
+                    data.message || 'Something went wrong. Please call us at (954) 774-2606.');
+            }
+        } catch (err) {
+            console.error(err);
+            showAlert('contactError', 'error',
+                'Could not send message. Please call us at (954) 774-2606.');
+        } finally {
+            setBtn('contactBtn', '📧 Send Message', false);
+        }
+    }
+
+    // ── Smooth scroll ─────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
         });
+    });
     </script>
 
 </body>
